@@ -68,10 +68,10 @@ button {
 }
 
 .logo {
-    width: 48px;
-    height: 48px;
+    width: 64px;
+    height: 64px;
     object-fit: contain;
-    border-radius: 12px;
+    border-radius: 14px;
 }
 
 .brand h1 {
@@ -470,6 +470,50 @@ button {
     flex: 1;
 }
 
+/* =========================================================
+   INSTRUKCJA
+========================================================= */
+
+.help-content {
+    padding: 0 20px 22px;
+}
+
+.help-step {
+    display: flex;
+    gap: 13px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.help-step:last-child {
+    border-bottom: 0;
+}
+
+.help-number {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    background: var(--green-light);
+    color: var(--green-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+}
+
+.help-step strong {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.help-step p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.45;
+}
+
 .toast {
     position: fixed;
     left: 50%;
@@ -535,8 +579,8 @@ button {
     }
 
     .logo {
-        width: 42px;
-        height: 42px;
+        width: 54px;
+        height: 54px;
     }
 
     .brand h1 {
@@ -719,6 +763,13 @@ button {
             Dzisiaj
         </button>
 
+        <button
+            class="secondary-btn"
+            id="howItWorksBtn"
+        >
+            ❓ Jak działa strona?
+        </button>
+
     </div>
 
     <section class="cards">
@@ -885,6 +936,198 @@ button {
                 >
                     Zapisz
                 </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- JAK DZIAŁA STRONA -->
+
+<div
+    class="modal-backdrop"
+    id="helpModal"
+>
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+
+                <h2>
+                    Jak działa strona?
+                </h2>
+
+                <p>
+                    Prosta instrukcja obsługi grafiku
+                </p>
+
+            </div>
+
+            <button
+                class="close-btn"
+                onclick="closeModal('helpModal')"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div class="help-content">
+
+            <div class="help-step">
+
+                <div class="help-number">
+                    1
+                </div>
+
+                <div>
+
+                    <strong>
+                        Dodaj siebie
+                    </strong>
+
+                    <p>
+                        Kliknij „+ Dodaj siebie do grafiku”
+                        i wpisz swoje imię.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="help-step">
+
+                <div class="help-number">
+                    2
+                </div>
+
+                <div>
+
+                    <strong>
+                        Wybierz dzień
+                    </strong>
+
+                    <p>
+                        Kliknij swoją komórkę przy wybranym
+                        dniu, żeby ustawić swoją dostępność.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="help-step">
+
+                <div class="help-number">
+                    3
+                </div>
+
+                <div>
+
+                    <strong>
+                        Zaznacz godziny
+                    </strong>
+
+                    <p>
+                        Kliknij lub przeciągnij po godzinach.
+                        Godziny są podzielone na półgodzinne
+                        przedziały.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="help-step">
+
+                <div class="help-number">
+                    4
+                </div>
+
+                <div>
+
+                    <strong>
+                        Przykład: 2 godziny
+                    </strong>
+
+                    <p>
+                        Jeśli chcesz być dostępny od 16:00
+                        do 18:00, zaznacz 16:00, 16:30,
+                        17:00 i 17:30.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="help-step">
+
+                <div class="help-number">
+                    5
+                </div>
+
+                <div>
+
+                    <strong>
+                        Zapisz
+                    </strong>
+
+                    <p>
+                        Kliknij „Zapisz”. Twoja dostępność
+                        pojawi się od razu w grafiku.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="help-step">
+
+                <div class="help-number">
+                    6
+                </div>
+
+                <div>
+
+                    <strong>
+                        Wspólny grafik
+                    </strong>
+
+                    <p>
+                        Wszystkie osoby widzą ten sam grafik.
+                        Zmiany są synchronizowane na żywo
+                        między telefonami i komputerami.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="help-step">
+
+                <div class="help-number">
+                    7
+                </div>
+
+                <div>
+
+                    <strong>
+                        Zmiana dostępności
+                    </strong>
+
+                    <p>
+                        Kliknij ponownie swój dzień,
+                        zmień zaznaczone godziny i kliknij
+                        „Zapisz”.
+                    </p>
+
+                </div>
 
             </div>
 
@@ -2375,6 +2618,30 @@ document
     .addEventListener(
         "click",
         clearAvailability
+    );
+
+
+/* =========================================================
+   JAK DZIAŁA STRONA
+========================================================= */
+
+document
+    .getElementById(
+        "howItWorksBtn"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            document
+                .getElementById(
+                    "helpModal"
+                )
+                .classList.add(
+                    "show"
+                );
+
+        }
     );
 
 
