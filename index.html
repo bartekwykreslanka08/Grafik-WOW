@@ -10,16 +10,17 @@
 
 <style>
 :root {
-    --green: #31a66a;
-    --green-dark: #248b56;
+    --green: #35a86b;
+    --green-dark: #278653;
     --green-light: #eaf8f0;
-    --text: #18201c;
+    --text: #17201b;
     --muted: #737b76;
-    --border: #e7ebe8;
+    --border: #e5ebe7;
     --bg: #f7f9f8;
-    --white: #ffffff;
-    --danger: #dc4b4b;
-    --shadow: 0 8px 30px rgba(0,0,0,.055);
+    --white: #fff;
+    --red: #d94b4b;
+    --red-light: #fff0f0;
+    --shadow: 0 8px 30px rgba(0,0,0,.05);
     --radius: 18px;
 }
 
@@ -31,12 +32,8 @@ body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
+    font-family: Inter, -apple-system, BlinkMacSystemFont,
+                 "Segoe UI", sans-serif;
 }
 
 button,
@@ -49,7 +46,7 @@ button {
 }
 
 .header {
-    background: var(--white);
+    background: white;
     border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
@@ -59,17 +56,15 @@ button {
 .header-inner {
     max-width: 1500px;
     margin: auto;
-    padding: 16px 22px;
+    padding: 15px 22px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 20px;
 }
 
 .brand {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 13px;
 }
 
 .logo {
@@ -97,8 +92,8 @@ button {
 
 .topbar {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     gap: 15px;
     margin-bottom: 20px;
     flex-wrap: wrap;
@@ -111,38 +106,39 @@ button {
 }
 
 .month-title {
-    min-width: 175px;
+    min-width: 190px;
     text-align: center;
     font-size: 21px;
     font-weight: 750;
+    text-transform: capitalize;
 }
 
 .icon-btn,
 .secondary-btn,
 .primary-btn,
 .danger-btn {
-    border: 0;
     border-radius: 12px;
     padding: 11px 15px;
-    transition: .15s ease;
+    transition: .15s;
 }
 
 .icon-btn,
 .secondary-btn {
-    background: var(--white);
     border: 1px solid var(--border);
+    background: white;
     color: var(--text);
 }
 
 .icon-btn:hover,
 .secondary-btn:hover {
-    background: #f2f5f3;
+    background: #f1f4f2;
 }
 
 .primary-btn {
+    border: 0;
     background: var(--green);
     color: white;
-    font-weight: 650;
+    font-weight: 700;
 }
 
 .primary-btn:hover {
@@ -150,27 +146,33 @@ button {
 }
 
 .danger-btn {
-    background: #fff1f1;
-    color: var(--danger);
+    border: 0;
+    background: var(--red-light);
+    color: var(--red);
 }
 
 .cards {
     display: grid;
-    grid-template-columns: 280px 1fr;
+    grid-template-columns: 285px 1fr;
     gap: 18px;
-    margin-bottom: 20px;
 }
 
 .card {
-    background: var(--white);
+    background: white;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
 }
 
 .card-title {
-    padding: 18px 18px 12px;
+    padding: 18px;
     font-weight: 750;
+    font-size: 16px;
+}
+
+.add-person {
+    margin: 0 12px 14px;
+    width: calc(100% - 24px);
 }
 
 .people {
@@ -178,16 +180,16 @@ button {
 }
 
 .person {
+    padding: 11px 9px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 11px 9px;
-    border-radius: 12px;
-    gap: 10px;
+    gap: 8px;
 }
 
 .person:hover {
-    background: #f6f8f7;
+    background: #f5f7f6;
 }
 
 .person-name {
@@ -195,6 +197,12 @@ button {
     align-items: center;
     gap: 8px;
     min-width: 0;
+}
+
+.person-name-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .status-dot {
@@ -205,23 +213,17 @@ button {
     flex-shrink: 0;
 }
 
-.person-name span:last-child {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
 .person-actions {
     display: flex;
-    gap: 5px;
+    gap: 4px;
 }
 
 .small-btn {
     border: 0;
     background: transparent;
-    padding: 6px 8px;
-    border-radius: 8px;
     color: var(--muted);
+    border-radius: 8px;
+    padding: 6px 8px;
 }
 
 .small-btn:hover {
@@ -229,9 +231,9 @@ button {
     color: var(--text);
 }
 
-.add-person {
-    margin: 4px 12px 14px;
-    width: calc(100% - 24px);
+.small-btn.delete:hover {
+    color: var(--red);
+    background: var(--red-light);
 }
 
 .notice {
@@ -256,7 +258,8 @@ button {
 .schedule-head,
 .schedule-row {
     display: grid;
-    grid-template-columns: 150px repeat(var(--days), minmax(75px, 1fr));
+    grid-template-columns:
+        150px repeat(var(--days), minmax(75px, 1fr));
 }
 
 .schedule-head {
@@ -267,7 +270,7 @@ button {
     padding: 12px;
     font-size: 13px;
     color: var(--muted);
-    font-weight: 650;
+    font-weight: 700;
     position: sticky;
     left: 0;
     background: white;
@@ -275,17 +278,17 @@ button {
 }
 
 .day-head {
+    padding: 9px 4px;
     text-align: center;
-    padding: 10px 4px;
+    font-size: 11px;
     border-left: 1px solid var(--border);
-    font-size: 12px;
 }
 
 .day-number {
     display: block;
+    margin-top: 2px;
     font-size: 16px;
     font-weight: 750;
-    margin-top: 2px;
 }
 
 .weekend {
@@ -300,13 +303,9 @@ button {
     border-bottom: 1px solid var(--border);
 }
 
-.schedule-row:last-child {
-    border-bottom: 0;
-}
-
 .person-cell {
     padding: 12px;
-    font-weight: 650;
+    font-weight: 700;
     background: white;
     position: sticky;
     left: 0;
@@ -316,37 +315,33 @@ button {
 
 .day-cell {
     min-height: 76px;
-    border-left: 1px solid var(--border);
     padding: 7px;
+    border-left: 1px solid var(--border);
     cursor: pointer;
-    transition: .15s;
+    transition: .12s;
 }
 
 .day-cell:hover {
-    background: #f5f8f6;
-}
-
-.day-cell.today:hover {
-    background: #def4e7 !important;
+    background: #f3f7f5;
 }
 
 .availability-pill {
     display: block;
     background: var(--green-light);
     color: var(--green-dark);
-    border-radius: 9px;
-    padding: 7px 5px;
+    border-radius: 8px;
+    padding: 7px 4px;
+    margin-bottom: 4px;
     text-align: center;
     font-size: 11px;
-    font-weight: 700;
-    margin-bottom: 4px;
+    font-weight: 750;
 }
 
 .empty-day {
-    color: #c3c9c5;
-    font-size: 12px;
     text-align: center;
     margin-top: 18px;
+    color: #c2c9c4;
+    font-size: 12px;
 }
 
 .mobile-schedule {
@@ -356,7 +351,7 @@ button {
 .modal-backdrop {
     position: fixed;
     inset: 0;
-    background: rgba(20,25,22,.38);
+    background: rgba(20,25,22,.42);
     display: none;
     align-items: center;
     justify-content: center;
@@ -369,19 +364,18 @@ button {
 }
 
 .modal {
-    background: white;
     width: min(520px, 100%);
     max-height: 92vh;
     overflow-y: auto;
+    background: white;
     border-radius: 22px;
-    box-shadow: 0 25px 70px rgba(0,0,0,.18);
+    box-shadow: 0 25px 70px rgba(0,0,0,.2);
 }
 
 .modal-header {
-    padding: 20px 20px 10px;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
     gap: 15px;
 }
 
@@ -393,23 +387,23 @@ button {
 .modal-header p {
     margin: 5px 0 0;
     color: var(--muted);
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .close-btn {
+    width: 35px;
+    height: 35px;
     border: 0;
-    background: #f1f4f2;
-    width: 34px;
-    height: 34px;
     border-radius: 50%;
+    background: #f0f3f1;
 }
 
 .modal-content {
-    padding: 15px 20px 20px;
+    padding: 0 20px 20px;
 }
 
 .field {
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
 
 .field label {
@@ -440,34 +434,30 @@ button {
 }
 
 .time-slot {
-    border: 1px solid var(--border);
-    background: #fafbfa;
-    border-radius: 10px;
     min-height: 45px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fafbfa;
     font-size: 13px;
-    font-weight: 600;
-    transition: .1s;
+    font-weight: 650;
+    touch-action: none;
 }
 
 .time-slot.selected {
     background: var(--green);
+    border-color: var(--green);
     color: white;
-    border-color: var(--green);
-}
-
-.time-slot:hover {
-    border-color: var(--green);
 }
 
 .selection-info {
-    margin: 13px 0;
+    padding: 11px;
+    margin: 0 0 13px;
+    border-radius: 11px;
     background: var(--green-light);
     color: var(--green-dark);
-    padding: 11px;
-    border-radius: 11px;
-    font-size: 13px;
     text-align: center;
-    font-weight: 650;
+    font-size: 13px;
+    font-weight: 700;
 }
 
 .modal-actions {
@@ -484,30 +474,29 @@ button {
     position: fixed;
     left: 50%;
     bottom: 22px;
-    transform: translateX(-50%) translateY(100px);
+    transform: translate(-50%, 100px);
     background: #17201b;
     color: white;
     padding: 12px 17px;
     border-radius: 12px;
-    font-size: 14px;
-    z-index: 200;
     opacity: 0;
     transition: .25s;
+    z-index: 300;
 }
 
 .toast.show {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    transform: translate(-50%, 0);
 }
 
 .loading {
     position: fixed;
     inset: 0;
-    background: rgba(255,255,255,.8);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 300;
+    background: rgba(255,255,255,.78);
+    z-index: 400;
 }
 
 .loading.hidden {
@@ -530,18 +519,24 @@ button {
 }
 
 .error {
-    background: #fff1f1;
-    color: #a62e2e;
-    border: 1px solid #ffd5d5;
+    display: none;
+    margin-bottom: 15px;
     padding: 13px 16px;
     border-radius: 12px;
-    margin-bottom: 15px;
-    display: none;
+    background: #fff1f1;
+    border: 1px solid #ffd5d5;
+    color: #a62e2e;
 }
 
-@media (max-width: 800px) {
+@media(max-width:800px) {
+
     .header-inner {
         padding: 13px 15px;
+    }
+
+    .logo {
+        width: 42px;
+        height: 42px;
     }
 
     .brand h1 {
@@ -550,11 +545,6 @@ button {
 
     .brand small {
         font-size: 11px;
-    }
-
-    .logo {
-        width: 42px;
-        height: 42px;
     }
 
     .container {
@@ -600,6 +590,7 @@ button {
     .mobile-day-number {
         color: var(--muted);
         font-size: 13px;
+        text-transform: capitalize;
     }
 
     .mobile-person {
@@ -613,9 +604,9 @@ button {
     }
 
     .mobile-person-name {
+        margin-bottom: 6px;
         font-size: 13px;
         font-weight: 700;
-        margin-bottom: 6px;
     }
 
     .mobile-times {
@@ -625,10 +616,10 @@ button {
     }
 
     .mobile-time {
-        background: var(--green-light);
-        color: var(--green-dark);
         padding: 5px 7px;
         border-radius: 7px;
+        background: var(--green-light);
+        color: var(--green-dark);
         font-size: 11px;
         font-weight: 700;
     }
@@ -638,40 +629,30 @@ button {
         font-size: 12px;
     }
 
-    .month-title {
-        min-width: 140px;
-        font-size: 18px;
-    }
-
-    .topbar {
-        align-items: stretch;
-    }
-
     .month-selector {
         width: 100%;
         justify-content: space-between;
     }
 
-    .month-selector button {
-        width: 42px;
-    }
-
     .month-title {
         flex: 1;
+        min-width: 0;
+        font-size: 18px;
     }
 
     .topbar > .secondary-btn {
         width: 100%;
     }
-
-    .time-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
 }
 
-@media (max-width: 400px) {
+@media(max-width:400px) {
+
     .time-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .modal {
+        border-radius: 18px;
     }
 }
 </style>
@@ -680,15 +661,26 @@ button {
 <body>
 
 <header class="header">
+
     <div class="header-inner">
+
         <div class="brand">
-            <img src="podzielnialogo.png" class="logo" alt="Podzielnia WOW">
+
+            <img
+                src="podzielnialogo.png"
+                class="logo"
+                alt="Podzielnia WOW"
+            >
+
             <div>
                 <h1>Podzielnia WOW – Grafik</h1>
                 <small>Wspólny grafik dostępności</small>
             </div>
+
         </div>
+
     </div>
+
 </header>
 
 <main class="container">
@@ -696,63 +688,121 @@ button {
     <div id="error" class="error"></div>
 
     <div class="topbar">
+
         <div class="month-selector">
-            <button class="icon-btn" id="prevMonth">‹</button>
-            <div class="month-title" id="monthTitle"></div>
-            <button class="icon-btn" id="nextMonth">›</button>
+
+            <button
+                class="icon-btn"
+                id="prevMonth"
+            >
+                ‹
+            </button>
+
+            <div
+                class="month-title"
+                id="monthTitle"
+            ></div>
+
+            <button
+                class="icon-btn"
+                id="nextMonth"
+            >
+                ›
+            </button>
+
         </div>
 
-        <button class="secondary-btn" id="todayBtn">
+        <button
+            class="secondary-btn"
+            id="todayBtn"
+        >
             Dzisiaj
         </button>
+
     </div>
 
     <section class="cards">
 
         <aside class="card people-card">
+
             <div class="card-title">
                 Osoby w grafiku
             </div>
 
-            <button class="primary-btn add-person" id="addPersonBtn">
+            <button
+                class="primary-btn add-person"
+                id="addPersonBtn"
+            >
                 + Dodaj siebie do grafiku
             </button>
 
-            <div class="people" id="peopleList"></div>
+            <div
+                class="people"
+                id="peopleList"
+            ></div>
+
         </aside>
 
         <section class="card schedule-wrapper">
+
             <div class="schedule-scroll">
+
                 <div id="desktopSchedule"></div>
+
             </div>
+
         </section>
 
     </section>
 
-    <section id="mobileSchedule" class="mobile-schedule"></section>
+    <section
+        id="mobileSchedule"
+        class="mobile-schedule"
+    ></section>
 
 </main>
 
-<!-- MODAL DODAWANIA OSOBY -->
 
-<div class="modal-backdrop" id="personModal">
+<!-- DODAWANIE OSOBY -->
+
+<div
+    class="modal-backdrop"
+    id="personModal"
+>
+
     <div class="modal">
 
         <div class="modal-header">
+
             <div>
-                <h2>Dodaj siebie do grafiku</h2>
-                <p>Twoje imię będzie widoczne dla wszystkich.</p>
+
+                <h2>
+                    Dodaj siebie do grafiku
+                </h2>
+
+                <p>
+                    Twoje imię będzie widoczne dla wszystkich.
+                </p>
+
             </div>
 
-            <button class="close-btn" onclick="closeModal('personModal')">
+            <button
+                class="close-btn"
+                onclick="closeModal('personModal')"
+            >
                 ×
             </button>
+
         </div>
 
         <div class="modal-content">
 
             <div class="field">
-                <label>Jak mam Cię wyświetlać?</label>
+
+                <label>
+                    Jak mam Cię wyświetlać?
+                </label>
+
                 <input
                     id="personName"
                     type="text"
@@ -760,30 +810,47 @@ button {
                     placeholder="np. Bartek K"
                     autocomplete="off"
                 >
+
             </div>
 
-            <button class="primary-btn" style="width:100%" id="savePersonBtn">
+            <button
+                class="primary-btn"
+                style="width:100%"
+                id="savePersonBtn"
+            >
                 Dodaj mnie
             </button>
 
         </div>
+
     </div>
+
 </div>
 
-<!-- MODAL GODZIN -->
 
-<div class="modal-backdrop" id="availabilityModal">
+<!-- GODZINY -->
+
+<div
+    class="modal-backdrop"
+    id="availabilityModal"
+>
 
     <div class="modal">
 
         <div class="modal-header">
 
             <div>
+
                 <h2 id="availabilityTitle"></h2>
+
                 <p id="availabilitySubtitle"></p>
+
             </div>
 
-            <button class="close-btn" onclick="closeModal('availabilityModal')">
+            <button
+                class="close-btn"
+                onclick="closeModal('availabilityModal')"
+            >
                 ×
             </button>
 
@@ -791,19 +858,31 @@ button {
 
         <div class="modal-content">
 
-            <div class="selection-info" id="selectionInfo">
+            <div
+                class="selection-info"
+                id="selectionInfo"
+            >
                 Brak zaznaczonej dostępności
             </div>
 
-            <div class="time-grid" id="timeGrid"></div>
+            <div
+                class="time-grid"
+                id="timeGrid"
+            ></div>
 
             <div class="modal-actions">
 
-                <button class="secondary-btn" id="clearAvailabilityBtn">
+                <button
+                    class="secondary-btn"
+                    id="clearAvailabilityBtn"
+                >
                     Wyczyść
                 </button>
 
-                <button class="primary-btn" id="saveAvailabilityBtn">
+                <button
+                    class="primary-btn"
+                    id="saveAvailabilityBtn"
+                >
                     Zapisz
                 </button>
 
@@ -812,92 +891,120 @@ button {
         </div>
 
     </div>
+
 </div>
 
-<div class="toast" id="toast"></div>
 
-<div class="loading" id="loading">
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+<div
+    class="loading"
+    id="loading"
+>
+
     <div class="spinner"></div>
+
 </div>
+
 
 <script>
+
 /* =========================================================
-   SUPABASE – WSTAW TUTAJ SWOJE DANE
+   SUPABASE
 ========================================================= */
 
-const SUPABASE_URL = "TU_WKLEJ_SUPABASE_PROJECT_URL";
-const SUPABASE_ANON_KEY = "TU_WKLEJ_SUPABASE_ANON_KEY";
+const SUPABASE_URL =
+    "https://gzpdgfxnephknfystigv.supabase.co";
 
-const supabaseConfigured =
-    SUPABASE_URL.startsWith("https://") &&
-    !SUPABASE_URL.includes("TU_WKLEJ") &&
-    SUPABASE_ANON_KEY &&
-    !SUPABASE_ANON_KEY.includes("TU_WKLEJ");
+const SUPABASE_ANON_KEY =
+    "sb_publishable_2aNS5-OgewlO9MRh7-q-1g_5EwGL4UM";
 
-let supabaseClient = null;
-
-if (supabaseConfigured) {
-    supabaseClient = window.supabase.createClient(
+const supabaseClient =
+    window.supabase.createClient(
         SUPABASE_URL,
         SUPABASE_ANON_KEY
     );
-}
+
 
 /* =========================================================
-   STAN APLIKACJI
+   STAN
 ========================================================= */
 
 let currentMonth = new Date();
+
 currentMonth.setDate(1);
 
 let users = [];
+
 let availability = [];
 
 let selectedUserId = null;
+
 let selectedDate = null;
+
 let selectedSlots = new Set();
 
 let dragging = false;
+
 let dragStart = null;
+
 
 /* =========================================================
    GODZINY
 ========================================================= */
 
 function generateTimeSlots() {
-    const result = [];
+
+    const slots = [];
 
     for (let hour = 12; hour <= 22; hour++) {
 
-        result.push(
-            `${String(hour).padStart(2, "0")}:00`
+        slots.push(
+            `${String(hour).padStart(2,"0")}:00`
         );
 
-        if (hour !== 22) {
-            result.push(
-                `${String(hour).padStart(2, "0")}:30`
+        if (hour < 22) {
+
+            slots.push(
+                `${String(hour).padStart(2,"0")}:30`
             );
+
         }
+
     }
 
-    return result;
+    return slots;
 }
 
 const timeSlots = generateTimeSlots();
+
 
 /* =========================================================
    DATY
 ========================================================= */
 
 function dateToString(date) {
-    const y = date.getFullYear();
-    const m = String(date.getMonth() + 1).padStart(2, "0");
-    const d = String(date.getDate()).padStart(2, "0");
 
-    return `${y}-${m}-${d}`;
+    const year =
+        date.getFullYear();
+
+    const month =
+        String(date.getMonth() + 1)
+            .padStart(2,"0");
+
+    const day =
+        String(date.getDate())
+            .padStart(2,"0");
+
+    return `${year}-${month}-${day}`;
 }
 
 function getDaysInMonth(date) {
+
     return new Date(
         date.getFullYear(),
         date.getMonth() + 1,
@@ -906,6 +1013,7 @@ function getDaysInMonth(date) {
 }
 
 function getDateForDay(day) {
+
     return new Date(
         currentMonth.getFullYear(),
         currentMonth.getMonth(),
@@ -914,130 +1022,172 @@ function getDateForDay(day) {
 }
 
 function formatMonth(date) {
-    return new Intl.DateTimeFormat("pl-PL", {
-        month: "long",
-        year: "numeric"
-    }).format(date);
+
+    return new Intl.DateTimeFormat(
+        "pl-PL",
+        {
+            month: "long",
+            year: "numeric"
+        }
+    ).format(date);
 }
 
 function formatFullDate(date) {
-    return new Intl.DateTimeFormat("pl-PL", {
-        weekday: "long",
-        day: "numeric",
-        month: "long"
-    }).format(date);
+
+    return new Intl.DateTimeFormat(
+        "pl-PL",
+        {
+            weekday: "long",
+            day: "numeric",
+            month: "long"
+        }
+    ).format(date);
 }
 
 function shortWeekday(date) {
-    return new Intl.DateTimeFormat("pl-PL", {
-        weekday: "short"
-    })
+
+    return new Intl.DateTimeFormat(
+        "pl-PL",
+        {
+            weekday: "short"
+        }
+    )
     .format(date)
-    .replace(".", "")
-    .slice(0, 3);
+    .replace(".","")
+    .slice(0,3);
 }
 
+
 /* =========================================================
-   LOADING / TOAST
+   UI
 ========================================================= */
 
 function setLoading(value) {
+
     document
         .getElementById("loading")
-        .classList.toggle("hidden", !value);
+        .classList.toggle(
+            "hidden",
+            !value
+        );
 }
 
 function showToast(message) {
-    const toast = document.getElementById("toast");
+
+    const toast =
+        document.getElementById("toast");
 
     toast.textContent = message;
+
     toast.classList.add("show");
 
-    clearTimeout(showToast.timer);
+    clearTimeout(
+        showToast.timer
+    );
 
-    showToast.timer = setTimeout(() => {
-        toast.classList.remove("show");
-    }, 2200);
+    showToast.timer =
+        setTimeout(() => {
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },2200);
 }
 
 function showError(message) {
-    const error = document.getElementById("error");
+
+    const error =
+        document.getElementById("error");
 
     error.textContent = message;
+
     error.style.display = "block";
 }
 
 function hideError() {
-    document.getElementById("error").style.display = "none";
+
+    document
+        .getElementById("error")
+        .style.display = "none";
 }
 
+
 /* =========================================================
-   SUPABASE
+   POBIERANIE DANYCH
 ========================================================= */
 
 async function loadData() {
 
-    if (!supabaseConfigured) {
-        hideLoading();
-        showError(
-            "Najpierw wpisz Supabase Project URL oraz Supabase Anon/Public Key w kodzie strony."
-        );
-        render();
-        return;
-    }
-
     setLoading(true);
+
     hideError();
 
     try {
 
-        const [usersResult, availabilityResult] =
-            await Promise.all([
+        const [
+            usersResult,
+            availabilityResult
+        ] =
+        await Promise.all([
 
-                supabaseClient
-                    .from("users")
-                    .select("*")
-                    .order("created_at", {
+            supabaseClient
+                .from("users")
+                .select("*")
+                .order(
+                    "created_at",
+                    {
                         ascending: true
-                    }),
+                    }
+                ),
 
-                supabaseClient
-                    .from("availability")
-                    .select("*")
-            ]);
+            supabaseClient
+                .from("availability")
+                .select("*")
 
-        if (usersResult.error) {
+        ]);
+
+        if (usersResult.error)
             throw usersResult.error;
-        }
 
-        if (availabilityResult.error) {
+        if (availabilityResult.error)
             throw availabilityResult.error;
-        }
 
-        users = usersResult.data || [];
-        availability = availabilityResult.data || [];
+        users =
+            usersResult.data || [];
+
+        availability =
+            availabilityResult.data || [];
 
         render();
 
-    } catch (error) {
+    } catch(error) {
 
         console.error(error);
 
         showError(
-            "Nie udało się pobrać grafiku. Sprawdź połączenie z bazą Supabase."
+            "Nie udało się pobrać grafiku. Sprawdź połączenie z Supabase."
         );
 
     } finally {
+
         setLoading(false);
+
     }
 }
 
+
+/* =========================================================
+   REALTIME
+========================================================= */
+
 function setupRealtime() {
 
-    if (!supabaseConfigured) return;
-
     supabaseClient
-        .channel("podzielnia-wow-grafik")
+
+        .channel(
+            "podzielnia-wow-grafik"
+        )
 
         .on(
             "postgres_changes",
@@ -1047,7 +1197,9 @@ function setupRealtime() {
                 table: "users"
             },
             () => {
+
                 loadData();
+
             }
         )
 
@@ -1059,12 +1211,16 @@ function setupRealtime() {
                 table: "availability"
             },
             () => {
+
                 loadData();
+
             }
         )
 
         .subscribe();
+
 }
+
 
 /* =========================================================
    RENDER
@@ -1072,76 +1228,121 @@ function setupRealtime() {
 
 function render() {
 
-    document.getElementById("monthTitle").textContent =
+    document
+        .getElementById("monthTitle")
+        .textContent =
         formatMonth(currentMonth);
 
     renderPeople();
-    renderDesktopSchedule();
-    renderMobileSchedule();
+
+    renderDesktop();
+
+    renderMobile();
+
 }
+
+
+/* =========================================================
+   OSOBY
+========================================================= */
 
 function renderPeople() {
 
-    const list = document.getElementById("peopleList");
+    const list =
+        document.getElementById(
+            "peopleList"
+        );
 
     if (!users.length) {
+
         list.innerHTML = `
             <div class="notice">
-                Nikt jeszcze nie dodał siebie do grafiku.
+                Nikt jeszcze nie dodał siebie
+                do grafiku.
             </div>
         `;
+
         return;
     }
 
-    list.innerHTML = users.map(user => `
-        <div class="person">
+    list.innerHTML =
+        users.map(user => `
 
-            <div class="person-name">
-                <span class="status-dot"></span>
-                <span>${escapeHtml(user.display_name)}</span>
+            <div class="person">
+
+                <div class="person-name">
+
+                    <span class="status-dot"></span>
+
+                    <span class="person-name-text">
+                        ${escapeHtml(
+                            user.display_name
+                        )}
+                    </span>
+
+                </div>
+
+                <div class="person-actions">
+
+                    <button
+                        class="small-btn"
+                        title="Edytuj dostępność"
+                        onclick="
+                            openFirstDay('${user.id}')
+                        "
+                    >
+                        ✎
+                    </button>
+
+                    <button
+                        class="small-btn delete"
+                        title="Usuń mnie z grafiku"
+                        onclick="
+                            deletePerson('${user.id}')
+                        "
+                    >
+                        🗑
+                    </button>
+
+                </div>
+
             </div>
 
-            <div class="person-actions">
+        `).join("");
 
-                <button
-                    class="small-btn"
-                    title="Pokaż dostępność"
-                    onclick="filterPerson('${user.id}')"
-                >
-                    👁
-                </button>
-
-                <button
-                    class="small-btn"
-                    title="Usuń osobę"
-                    onclick="deletePerson('${user.id}')"
-                >
-                    ×
-                </button>
-
-            </div>
-
-        </div>
-    `).join("");
 }
 
-function renderDesktopSchedule() {
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+function renderDesktop() {
 
     const container =
-        document.getElementById("desktopSchedule");
+        document.getElementById(
+            "desktopSchedule"
+        );
 
     if (!users.length) {
+
         container.innerHTML = `
             <div class="notice">
-                Dodaj pierwszą osobę, aby rozpocząć grafik.
+                Dodaj pierwszą osobę,
+                aby rozpocząć grafik.
             </div>
         `;
+
         return;
     }
 
-    const days = getDaysInMonth(currentMonth);
+    const days =
+        getDaysInMonth(
+            currentMonth
+        );
 
     let html = `
+
         <div
             class="schedule"
             style="--days:${days}"
@@ -1152,11 +1353,18 @@ function renderDesktopSchedule() {
             <div class="person-header">
                 Osoba
             </div>
+
     `;
 
-    for (let day = 1; day <= days; day++) {
+    for (
+        let day = 1;
+        day <= days;
+        day++
+    ) {
 
-        const date = getDateForDay(day);
+        const date =
+            getDateForDay(day);
+
         const weekend =
             date.getDay() === 0 ||
             date.getDay() === 6;
@@ -1166,40 +1374,63 @@ function renderDesktopSchedule() {
             dateToString(new Date());
 
         html += `
-            <div class="
-                day-head
-                ${weekend ? "weekend" : ""}
-                ${today ? "today" : ""}
-            ">
+
+            <div
+                class="
+                    day-head
+                    ${weekend ? "weekend" : ""}
+                    ${today ? "today" : ""}
+                "
+            >
+
                 ${shortWeekday(date)}
-                <span class="day-number">${day}</span>
+
+                <span class="day-number">
+                    ${day}
+                </span>
+
             </div>
+
         `;
+
     }
 
     html += `</div>`;
 
-    for (const user of users) {
+
+    users.forEach(user => {
 
         html += `
+
             <div class="schedule-row">
 
                 <div class="person-cell">
-                    ${escapeHtml(user.display_name)}
+                    ${escapeHtml(
+                        user.display_name
+                    )}
                 </div>
+
         `;
 
-        for (let day = 1; day <= days; day++) {
+        for (
+            let day = 1;
+            day <= days;
+            day++
+        ) {
 
-            const date = getDateForDay(day);
-            const dateString = dateToString(date);
+            const date =
+                getDateForDay(day);
+
+            const dateString =
+                dateToString(date);
 
             const weekend =
                 date.getDay() === 0 ||
                 date.getDay() === 6;
 
             const today =
-                dateString === dateToString(new Date());
+                dateString ===
+                dateToString(new Date());
 
             const entries =
                 getUserAvailability(
@@ -1208,6 +1439,7 @@ function renderDesktopSchedule() {
                 );
 
             html += `
+
                 <div
                     class="
                         day-cell
@@ -1221,21 +1453,28 @@ function renderDesktopSchedule() {
                         )
                     "
                 >
+
             `;
 
             if (entries.length) {
 
-                entries.forEach(entry => {
+                entries.forEach(
+                    entry => {
 
-                    html += `
-                        <span class="availability-pill">
-                            ${entry.start_time.slice(0,5)}
-                            –
-                            ${entry.end_time.slice(0,5)}
-                        </span>
-                    `;
+                        html += `
 
-                });
+                            <span
+                                class="availability-pill"
+                            >
+                                ${entry.start_time.slice(0,5)}
+                                –
+                                ${entry.end_time.slice(0,5)}
+                            </span>
+
+                        `;
+
+                    }
+                );
 
             } else {
 
@@ -1248,56 +1487,76 @@ function renderDesktopSchedule() {
             }
 
             html += `</div>`;
+
         }
 
         html += `</div>`;
-    }
+
+    });
 
     html += `</div>`;
 
     container.innerHTML = html;
+
 }
 
-function renderMobileSchedule() {
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+function renderMobile() {
 
     const container =
-        document.getElementById("mobileSchedule");
+        document.getElementById(
+            "mobileSchedule"
+        );
 
     if (!users.length) {
+
         container.innerHTML = `
             <div class="card">
                 <div class="notice">
-                    Dodaj pierwszą osobę, aby rozpocząć grafik.
+                    Dodaj pierwszą osobę,
+                    aby rozpocząć grafik.
                 </div>
             </div>
         `;
+
         return;
     }
 
-    const days = getDaysInMonth(currentMonth);
+    const days =
+        getDaysInMonth(
+            currentMonth
+        );
 
     let html = "";
 
-    for (let day = 1; day <= days; day++) {
+    for (
+        let day = 1;
+        day <= days;
+        day++
+    ) {
 
-        const date = getDateForDay(day);
-        const dateString = dateToString(date);
+        const date =
+            getDateForDay(day);
+
+        const dateString =
+            dateToString(date);
 
         const today =
-            dateString === dateToString(new Date());
-
-        const weekend =
-            date.getDay() === 0 ||
-            date.getDay() === 6;
+            dateString ===
+            dateToString(new Date());
 
         html += `
+
             <div class="mobile-day">
 
                 <div
                     class="
                         mobile-day-header
                         ${today ? "today" : ""}
-                        ${weekend ? "weekend" : ""}
                     "
                 >
 
@@ -1310,6 +1569,7 @@ function renderMobileSchedule() {
                     </div>
 
                 </div>
+
         `;
 
         users.forEach(user => {
@@ -1321,6 +1581,7 @@ function renderMobileSchedule() {
                 );
 
             html += `
+
                 <div
                     class="mobile-person"
                     onclick="
@@ -1332,25 +1593,32 @@ function renderMobileSchedule() {
                 >
 
                     <div class="mobile-person-name">
-                        ${escapeHtml(user.display_name)}
+                        ${escapeHtml(
+                            user.display_name
+                        )}
                     </div>
 
                     <div class="mobile-times">
+
             `;
 
             if (entries.length) {
 
-                entries.forEach(entry => {
+                entries.forEach(
+                    entry => {
 
-                    html += `
-                        <span class="mobile-time">
-                            ${entry.start_time.slice(0,5)}
-                            –
-                            ${entry.end_time.slice(0,5)}
-                        </span>
-                    `;
+                        html += `
 
-                });
+                            <span class="mobile-time">
+                                ${entry.start_time.slice(0,5)}
+                                –
+                                ${entry.end_time.slice(0,5)}
+                            </span>
+
+                        `;
+
+                    }
+                );
 
             } else {
 
@@ -1363,52 +1631,98 @@ function renderMobileSchedule() {
             }
 
             html += `
+
                     </div>
+
                 </div>
+
             `;
+
         });
 
         html += `</div>`;
+
     }
 
     container.innerHTML = html;
+
 }
+
 
 /* =========================================================
    DOSTĘPNOŚĆ
 ========================================================= */
 
-function getUserAvailability(userId, date) {
+function getUserAvailability(
+    userId,
+    date
+) {
 
     return availability
-        .filter(item =>
-            item.user_id === userId &&
-            item.date === date
+        .filter(
+            item =>
+                item.user_id === userId &&
+                item.date === date
         )
-        .sort((a,b) =>
-            a.start_time.localeCompare(b.start_time)
+        .sort(
+            (a,b) =>
+                a.start_time.localeCompare(
+                    b.start_time
+                )
         );
+
 }
 
-function openAvailability(userId, date) {
 
-    const user = users.find(
-        u => u.id === userId
+function openFirstDay(userId) {
+
+    const date =
+        dateToString(
+            getDateForDay(1)
+        );
+
+    openAvailability(
+        userId,
+        date
     );
+
+}
+
+
+function openAvailability(
+    userId,
+    date
+) {
+
+    const user =
+        users.find(
+            u => u.id === userId
+        );
 
     if (!user) return;
 
-    selectedUserId = userId;
-    selectedDate = date;
-    selectedSlots = new Set();
+    selectedUserId =
+        userId;
+
+    selectedDate =
+        date;
+
+    selectedSlots =
+        new Set();
 
     const existing =
-        getUserAvailability(userId, date);
+        getUserAvailability(
+            userId,
+            date
+        );
 
     existing.forEach(entry => {
 
-        const start = entry.start_time.slice(0,5);
-        const end = entry.end_time.slice(0,5);
+        const start =
+            entry.start_time.slice(0,5);
+
+        const end =
+            entry.end_time.slice(0,5);
 
         const startIndex =
             timeSlots.indexOf(start);
@@ -1416,181 +1730,288 @@ function openAvailability(userId, date) {
         const endIndex =
             timeSlots.indexOf(end);
 
-        if (startIndex >= 0 && endIndex >= 0) {
+        if (
+            startIndex >= 0 &&
+            endIndex >= 0
+        ) {
 
             for (
                 let i = startIndex;
                 i < endIndex;
                 i++
             ) {
+
                 selectedSlots.add(i);
+
             }
+
         }
+
     });
 
-    document.getElementById(
-        "availabilityTitle"
-    ).textContent =
+    document
+        .getElementById(
+            "availabilityTitle"
+        )
+        .textContent =
         user.display_name;
 
-    document.getElementById(
-        "availabilitySubtitle"
-    ).textContent =
+    document
+        .getElementById(
+            "availabilitySubtitle"
+        )
+        .textContent =
         formatFullDate(
-            new Date(date + "T12:00:00")
+            new Date(
+                date + "T12:00:00"
+            )
         );
 
     renderTimeGrid();
 
     document
-        .getElementById("availabilityModal")
+        .getElementById(
+            "availabilityModal"
+        )
         .classList.add("show");
+
 }
+
 
 function renderTimeGrid() {
 
     const grid =
-        document.getElementById("timeGrid");
+        document.getElementById(
+            "timeGrid"
+        );
 
     grid.innerHTML = "";
 
-    timeSlots.forEach((time, index) => {
+    timeSlots.forEach(
+        (time,index) => {
 
-        const button =
-            document.createElement("button");
+            const button =
+                document.createElement(
+                    "button"
+                );
 
-        button.className =
-            "time-slot";
+            button.className =
+                "time-slot";
 
-        if (selectedSlots.has(index)) {
-            button.classList.add("selected");
+            if (
+                selectedSlots.has(index)
+            ) {
+
+                button.classList.add(
+                    "selected"
+                );
+
+            }
+
+            button.textContent =
+                time;
+
+            button.dataset.index =
+                index;
+
+            button.addEventListener(
+                "pointerdown",
+                startDrag
+            );
+
+            button.addEventListener(
+                "pointerenter",
+                continueDrag
+            );
+
+            grid.appendChild(button);
+
         }
-
-        button.textContent = time;
-
-        button.dataset.index = index;
-
-        button.addEventListener(
-            "pointerdown",
-            startDrag
-        );
-
-        button.addEventListener(
-            "pointerenter",
-            continueDrag
-        );
-
-        grid.appendChild(button);
-    });
+    );
 
     updateSelectionInfo();
+
 }
 
+
 function startDrag(event) {
+
+    event.preventDefault();
 
     dragging = true;
 
     dragStart =
-        Number(event.currentTarget.dataset.index);
+        Number(
+            event.currentTarget.dataset.index
+        );
 
-    toggleRange(dragStart, dragStart);
+    toggleRange(
+        dragStart,
+        dragStart
+    );
 
     document.addEventListener(
         "pointerup",
         stopDrag,
-        { once: true }
+        { once:true }
     );
+
 }
+
 
 function continueDrag(event) {
 
     if (!dragging) return;
 
     const index =
-        Number(event.currentTarget.dataset.index);
+        Number(
+            event.currentTarget.dataset.index
+        );
 
-    toggleRange(dragStart, index);
+    toggleRange(
+        dragStart,
+        index
+    );
+
 }
+
 
 function stopDrag() {
 
     dragging = false;
 
     updateSelectionInfo();
+
 }
 
-function toggleRange(start, end) {
 
-    const min = Math.min(start, end);
-    const max = Math.max(start, end);
+function toggleRange(
+    start,
+    end
+) {
+
+    const min =
+        Math.min(start,end);
+
+    const max =
+        Math.max(start,end);
 
     selectedSlots.clear();
 
-    for (let i = min; i <= max; i++) {
+    for (
+        let i = min;
+        i <= max;
+        i++
+    ) {
+
         selectedSlots.add(i);
+
     }
 
     renderTimeGrid();
+
 }
+
 
 function updateSelectionInfo() {
 
     const info =
-        document.getElementById("selectionInfo");
+        document.getElementById(
+            "selectionInfo"
+        );
 
     if (!selectedSlots.size) {
+
         info.textContent =
             "Brak zaznaczonej dostępności";
+
         return;
     }
 
     const indexes =
-        [...selectedSlots].sort((a,b) => a-b);
+        [...selectedSlots]
+            .sort(
+                (a,b) => a-b
+            );
 
     const start =
-        timeSlots[indexes[0]];
+        timeSlots[
+            indexes[0]
+        ];
 
     const end =
-        timeSlots[indexes[indexes.length - 1] + 1];
+        timeSlots[
+            indexes[indexes.length - 1] + 1
+        ];
 
     info.textContent =
         `${start} – ${end || "23:00"}`;
+
 }
 
+
 /* =========================================================
-   ZAPIS
+   ZAPIS DOSTĘPNOŚCI
 ========================================================= */
 
 async function saveAvailability() {
 
-    if (!selectedUserId || !selectedDate) return;
-
-    if (!supabaseConfigured) return;
+    if (
+        !selectedUserId ||
+        !selectedDate
+    ) return;
 
     setLoading(true);
 
     try {
 
-        await supabaseClient
-            .from("availability")
-            .delete()
-            .eq("user_id", selectedUserId)
-            .eq("date", selectedDate);
+        const { error: deleteError } =
+            await supabaseClient
+                .from("availability")
+                .delete()
+                .eq(
+                    "user_id",
+                    selectedUserId
+                )
+                .eq(
+                    "date",
+                    selectedDate
+                );
+
+        if (deleteError)
+            throw deleteError;
+
 
         if (selectedSlots.size) {
 
             const indexes =
-                [...selectedSlots].sort((a,b) => a-b);
+                [...selectedSlots]
+                    .sort(
+                        (a,b) => a-b
+                    );
 
             const ranges = [];
 
-            let start = indexes[0];
-            let previous = indexes[0];
+            let start =
+                indexes[0];
 
-            for (let i = 1; i < indexes.length; i++) {
+            let previous =
+                indexes[0];
 
-                if (indexes[i] === previous + 1) {
-                    previous = indexes[i];
+            for (
+                let i = 1;
+                i < indexes.length;
+                i++
+            ) {
+
+                if (
+                    indexes[i] ===
+                    previous + 1
+                ) {
+
+                    previous =
+                        indexes[i];
+
                 } else {
 
                     ranges.push([
@@ -1598,9 +2019,14 @@ async function saveAvailability() {
                         previous + 1
                     ]);
 
-                    start = indexes[i];
-                    previous = indexes[i];
+                    start =
+                        indexes[i];
+
+                    previous =
+                        indexes[i];
+
                 }
+
             }
 
             ranges.push([
@@ -1608,35 +2034,52 @@ async function saveAvailability() {
                 previous + 1
             ]);
 
-            const rows = ranges.map(range => ({
 
-                user_id: selectedUserId,
+            const rows =
+                ranges.map(
+                    range => ({
 
-                date: selectedDate,
+                        user_id:
+                            selectedUserId,
 
-                start_time:
-                    timeSlots[range[0]],
+                        date:
+                            selectedDate,
 
-                end_time:
-                    timeSlots[range[1]] || "23:00"
+                        start_time:
+                            timeSlots[
+                                range[0]
+                            ],
 
-            }));
+                        end_time:
+                            timeSlots[
+                                range[1]
+                            ] || "23:00"
+
+                    })
+                );
+
 
             const { error } =
                 await supabaseClient
                     .from("availability")
                     .insert(rows);
 
-            if (error) throw error;
+            if (error)
+                throw error;
+
         }
 
-        closeModal("availabilityModal");
+        closeModal(
+            "availabilityModal"
+        );
 
         await loadData();
 
-        showToast("Zapisano");
+        showToast(
+            "Zapisano dostępność"
+        );
 
-    } catch (error) {
+    } catch(error) {
 
         console.error(error);
 
@@ -1647,14 +2090,22 @@ async function saveAvailability() {
     } finally {
 
         setLoading(false);
+
     }
+
 }
+
+
+/* =========================================================
+   WYCZYŚĆ DZIEŃ
+========================================================= */
 
 async function clearAvailability() {
 
-    if (!selectedUserId || !selectedDate) return;
-
-    if (!supabaseConfigured) return;
+    if (
+        !selectedUserId ||
+        !selectedDate
+    ) return;
 
     setLoading(true);
 
@@ -1664,20 +2115,31 @@ async function clearAvailability() {
             await supabaseClient
                 .from("availability")
                 .delete()
-                .eq("user_id", selectedUserId)
-                .eq("date", selectedDate);
+                .eq(
+                    "user_id",
+                    selectedUserId
+                )
+                .eq(
+                    "date",
+                    selectedDate
+                );
 
-        if (error) throw error;
+        if (error)
+            throw error;
 
         selectedSlots.clear();
 
-        closeModal("availabilityModal");
+        closeModal(
+            "availabilityModal"
+        );
 
         await loadData();
 
-        showToast("Wyczyszczono");
+        showToast(
+            "Wyczyszczono dostępność"
+        );
 
-    } catch (error) {
+    } catch(error) {
 
         console.error(error);
 
@@ -1688,30 +2150,30 @@ async function clearAvailability() {
     } finally {
 
         setLoading(false);
+
     }
+
 }
 
+
 /* =========================================================
-   DODAWANIE OSOBY
+   DODAJ OSOBĘ
 ========================================================= */
 
 async function addPerson() {
 
     const input =
-        document.getElementById("personName");
+        document.getElementById(
+            "personName"
+        );
 
     const name =
         input.value.trim();
 
     if (!name) {
-        input.focus();
-        return;
-    }
 
-    if (!supabaseConfigured) {
-        showError(
-            "Najpierw skonfiguruj Supabase."
-        );
+        input.focus();
+
         return;
     }
 
@@ -1723,20 +2185,25 @@ async function addPerson() {
             await supabaseClient
                 .from("users")
                 .insert({
-                    display_name: name
+                    display_name:name
                 });
 
-        if (error) throw error;
+        if (error)
+            throw error;
 
         input.value = "";
 
-        closeModal("personModal");
+        closeModal(
+            "personModal"
+        );
 
         await loadData();
 
-        showToast("Dodano do grafiku");
+        showToast(
+            "Dodano do grafiku"
+        );
 
-    } catch (error) {
+    } catch(error) {
 
         console.error(error);
 
@@ -1747,28 +2214,32 @@ async function addPerson() {
     } finally {
 
         setLoading(false);
+
     }
+
 }
 
+
 /* =========================================================
-   USUWANIE OSOBY
+   USUŃ OSOBĘ
 ========================================================= */
 
 async function deletePerson(userId) {
 
     const user =
-        users.find(u => u.id === userId);
+        users.find(
+            u => u.id === userId
+        );
 
     if (!user) return;
 
     const confirmed =
         confirm(
-            `Czy na pewno chcesz usunąć ${user.display_name} z grafiku?`
+            `Czy na pewno chcesz usunąć ${user.display_name} z grafiku?\n\nJej dostępność zostanie również usunięta.`
         );
 
-    if (!confirmed) return;
-
-    if (!supabaseConfigured) return;
+    if (!confirmed)
+        return;
 
     setLoading(true);
 
@@ -1778,15 +2249,21 @@ async function deletePerson(userId) {
             await supabaseClient
                 .from("users")
                 .delete()
-                .eq("id", userId);
+                .eq(
+                    "id",
+                    userId
+                );
 
-        if (error) throw error;
+        if (error)
+            throw error;
 
         await loadData();
 
-        showToast("Usunięto osobę");
+        showToast(
+            `${user.display_name} usunięto z grafiku`
+        );
 
-    } catch (error) {
+    } catch(error) {
 
         console.error(error);
 
@@ -1797,24 +2274,11 @@ async function deletePerson(userId) {
     } finally {
 
         setLoading(false);
+
     }
+
 }
 
-/* =========================================================
-   FILTROWANIE
-========================================================= */
-
-function filterPerson(userId) {
-
-    const user =
-        users.find(u => u.id === userId);
-
-    if (!user) return;
-
-    showToast(
-        `Kliknij dzień, aby edytować ${user.display_name}`
-    );
-}
 
 /* =========================================================
    MODALE
@@ -1824,135 +2288,193 @@ function closeModal(id) {
 
     document
         .getElementById(id)
-        .classList.remove("show");
+        .classList.remove(
+            "show"
+        );
+
 }
 
+
 document
-    .getElementById("addPersonBtn")
-    .addEventListener("click", () => {
+    .getElementById(
+        "addPersonBtn"
+    )
+    .addEventListener(
+        "click",
+        () => {
 
-        document
-            .getElementById("personModal")
-            .classList.add("show");
-
-        setTimeout(() => {
             document
-                .getElementById("personName")
-                .focus();
-        }, 100);
-    });
+                .getElementById(
+                    "personModal"
+                )
+                .classList.add(
+                    "show"
+                );
+
+            setTimeout(
+                () => {
+
+                    document
+                        .getElementById(
+                            "personName"
+                        )
+                        .focus();
+
+                },
+                100
+            );
+
+        }
+    );
+
 
 document
-    .getElementById("savePersonBtn")
+    .getElementById(
+        "savePersonBtn"
+    )
     .addEventListener(
         "click",
         addPerson
     );
 
+
 document
-    .getElementById("personName")
+    .getElementById(
+        "personName"
+    )
     .addEventListener(
         "keydown",
         event => {
 
-            if (event.key === "Enter") {
+            if (
+                event.key === "Enter"
+            ) {
+
                 addPerson();
+
             }
 
         }
     );
 
+
 document
-    .getElementById("saveAvailabilityBtn")
+    .getElementById(
+        "saveAvailabilityBtn"
+    )
     .addEventListener(
         "click",
         saveAvailability
     );
 
+
 document
-    .getElementById("clearAvailabilityBtn")
+    .getElementById(
+        "clearAvailabilityBtn"
+    )
     .addEventListener(
         "click",
         clearAvailability
     );
 
+
 /* =========================================================
-   NAWIGACJA MIESIĄCAMI
+   MIESIĄCE
 ========================================================= */
 
 document
-    .getElementById("prevMonth")
-    .addEventListener("click", () => {
+    .getElementById(
+        "prevMonth"
+    )
+    .addEventListener(
+        "click",
+        () => {
 
-        currentMonth =
-            new Date(
-                currentMonth.getFullYear(),
-                currentMonth.getMonth() - 1,
-                1
-            );
+            currentMonth =
+                new Date(
+                    currentMonth.getFullYear(),
+                    currentMonth.getMonth() - 1,
+                    1
+                );
 
-        render();
-    });
+            render();
 
-document
-    .getElementById("nextMonth")
-    .addEventListener("click", () => {
+        }
+    );
 
-        currentMonth =
-            new Date(
-                currentMonth.getFullYear(),
-                currentMonth.getMonth() + 1,
-                1
-            );
-
-        render();
-    });
 
 document
-    .getElementById("todayBtn")
-    .addEventListener("click", () => {
+    .getElementById(
+        "nextMonth"
+    )
+    .addEventListener(
+        "click",
+        () => {
 
-        const now = new Date();
+            currentMonth =
+                new Date(
+                    currentMonth.getFullYear(),
+                    currentMonth.getMonth() + 1,
+                    1
+                );
 
-        currentMonth =
-            new Date(
-                now.getFullYear(),
-                now.getMonth(),
-                1
-            );
+            render();
 
-        render();
-    });
+        }
+    );
+
+
+document
+    .getElementById(
+        "todayBtn"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            const now =
+                new Date();
+
+            currentMonth =
+                new Date(
+                    now.getFullYear(),
+                    now.getMonth(),
+                    1
+                );
+
+            render();
+
+        }
+    );
+
 
 /* =========================================================
-   POMOCNICZE
+   ESCAPE HTML
 ========================================================= */
 
 function escapeHtml(value) {
 
     return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
 }
+
 
 /* =========================================================
    START
 ========================================================= */
 
-function hideLoading() {
-    document
-        .getElementById("loading")
-        .classList.add("hidden");
-}
-
 render();
+
 loadData();
+
 setupRealtime();
 
 </script>
 
 </body>
-              </html>
+    </html>
