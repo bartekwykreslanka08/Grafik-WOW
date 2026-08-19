@@ -9,6 +9,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+
 :root {
     --green: #35a86b;
     --green-dark: #278653;
@@ -45,6 +46,11 @@ button {
     cursor: pointer;
 }
 
+
+/* =========================================================
+   HEADER
+========================================================= */
+
 .header {
     background: white;
     border-bottom: 1px solid var(--border);
@@ -56,27 +62,29 @@ button {
 .header-inner {
     max-width: 1500px;
     margin: auto;
-    padding: 15px 22px;
+    padding: 12px 22px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 .brand {
     display: flex;
     align-items: center;
-    gap: 13px;
+    gap: 15px;
 }
 
 .logo {
-    width: 64px;
-    height: 64px;
+    width: 72px;
+    height: 72px;
     object-fit: contain;
-    border-radius: 14px;
+    border-radius: 16px;
 }
 
 .brand h1 {
     margin: 0;
-    font-size: 21px;
+    font-size: 22px;
     font-weight: 750;
 }
 
@@ -84,11 +92,55 @@ button {
     color: var(--muted);
 }
 
+
+/* =========================================================
+   HEADER BUTTON
+========================================================= */
+
+.help-btn {
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--text);
+    border-radius: 12px;
+    padding: 11px 15px;
+    font-weight: 650;
+    transition: .15s;
+}
+
+.help-btn:hover {
+    background: #f1f4f2;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
 .container {
     max-width: 1500px;
     margin: auto;
     padding: 22px;
 }
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error {
+    display: none;
+    margin-bottom: 15px;
+    padding: 13px 16px;
+    border-radius: 12px;
+    background: #fff1f1;
+    border: 1px solid #ffd5d5;
+    color: #a62e2e;
+}
+
+
+/* =========================================================
+   TOPBAR
+========================================================= */
 
 .topbar {
     display: flex;
@@ -150,6 +202,117 @@ button {
     background: var(--red-light);
     color: var(--red);
 }
+
+
+/* =========================================================
+   DAILY SCHEDULE
+========================================================= */
+
+.daily-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.daily-header {
+    padding: 20px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #f5faf7
+    );
+}
+
+.daily-header-left h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.daily-header-left p {
+    margin: 5px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+    text-transform: capitalize;
+}
+
+.daily-date {
+    background: var(--green-light);
+    color: var(--green-dark);
+    padding: 9px 13px;
+    border-radius: 11px;
+    font-size: 13px;
+    font-weight: 750;
+}
+
+.daily-list {
+    padding: 8px;
+}
+
+.daily-person {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 13px;
+    transition: .12s;
+    cursor: pointer;
+}
+
+.daily-person:hover {
+    background: #f4f7f5;
+}
+
+.daily-person-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 750;
+}
+
+.daily-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--green);
+    flex-shrink: 0;
+}
+
+.daily-times {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.daily-time {
+    background: var(--green-light);
+    color: var(--green-dark);
+    border-radius: 9px;
+    padding: 7px 10px;
+    font-size: 12px;
+    font-weight: 750;
+}
+
+.daily-empty {
+    padding: 22px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
 
 .cards {
     display: grid;
@@ -241,6 +404,11 @@ button {
     color: var(--muted);
     font-size: 14px;
 }
+
+
+/* =========================================================
+   DESKTOP SCHEDULE
+========================================================= */
 
 .schedule-wrapper {
     overflow: hidden;
@@ -344,9 +512,19 @@ button {
     font-size: 12px;
 }
 
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
 .mobile-schedule {
     display: none;
 }
+
+
+/* =========================================================
+   MODALS
+========================================================= */
 
 .modal-backdrop {
     position: fixed;
@@ -402,6 +580,62 @@ button {
     padding: 0 20px 20px;
 }
 
+
+/* =========================================================
+   HELP MODAL
+========================================================= */
+
+.help-section {
+    margin-bottom: 18px;
+}
+
+.help-section:last-child {
+    margin-bottom: 0;
+}
+
+.help-section h3 {
+    margin: 0 0 7px;
+    font-size: 15px;
+}
+
+.help-section p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.55;
+    font-size: 14px;
+}
+
+.help-step {
+    display: flex;
+    gap: 11px;
+    margin-bottom: 11px;
+}
+
+.help-number {
+    width: 27px;
+    height: 27px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--green);
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.help-step-text {
+    padding-top: 4px;
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   FIELDS
+========================================================= */
+
 .field {
     margin-bottom: 16px;
 }
@@ -424,6 +658,11 @@ button {
 .field input:focus {
     border-color: var(--green);
 }
+
+
+/* =========================================================
+   TIME GRID
+========================================================= */
 
 .time-grid {
     display: grid;
@@ -470,49 +709,10 @@ button {
     flex: 1;
 }
 
+
 /* =========================================================
-   INSTRUKCJA
+   TOAST
 ========================================================= */
-
-.help-content {
-    padding: 0 20px 22px;
-}
-
-.help-step {
-    display: flex;
-    gap: 13px;
-    padding: 13px 0;
-    border-bottom: 1px solid var(--border);
-}
-
-.help-step:last-child {
-    border-bottom: 0;
-}
-
-.help-number {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    border-radius: 50%;
-    background: var(--green-light);
-    color: var(--green-dark);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-}
-
-.help-step strong {
-    display: block;
-    margin-bottom: 3px;
-}
-
-.help-step p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.45;
-}
 
 .toast {
     position: fixed;
@@ -532,6 +732,11 @@ button {
     opacity: 1;
     transform: translate(-50%, 0);
 }
+
+
+/* =========================================================
+   LOADING
+========================================================= */
 
 .loading {
     position: fixed;
@@ -562,25 +767,20 @@ button {
     }
 }
 
-.error {
-    display: none;
-    margin-bottom: 15px;
-    padding: 13px 16px;
-    border-radius: 12px;
-    background: #fff1f1;
-    border: 1px solid #ffd5d5;
-    color: #a62e2e;
-}
+
+/* =========================================================
+   MOBILE RESPONSIVE
+========================================================= */
 
 @media(max-width:800px) {
 
     .header-inner {
-        padding: 13px 15px;
+        padding: 10px 15px;
     }
 
     .logo {
-        width: 54px;
-        height: 54px;
+        width: 58px;
+        height: 58px;
     }
 
     .brand h1 {
@@ -589,6 +789,11 @@ button {
 
     .brand small {
         font-size: 11px;
+    }
+
+    .help-btn {
+        padding: 9px 11px;
+        font-size: 12px;
     }
 
     .container {
@@ -687,7 +892,31 @@ button {
     .topbar > .secondary-btn {
         width: 100%;
     }
+
+    .daily-header {
+        padding: 16px;
+    }
+
+    .daily-header-left h2 {
+        font-size: 18px;
+    }
+
+    .daily-date {
+        font-size: 11px;
+        padding: 8px 9px;
+    }
+
+    .daily-person {
+        display: block;
+        padding: 13px;
+    }
+
+    .daily-times {
+        justify-content: flex-start;
+        margin-top: 9px;
+    }
 }
+
 
 @media(max-width:400px) {
 
@@ -698,11 +927,35 @@ button {
     .modal {
         border-radius: 18px;
     }
+
+    .brand {
+        gap: 9px;
+    }
+
+    .logo {
+        width: 52px;
+        height: 52px;
+    }
+
+    .brand h1 {
+        font-size: 15px;
+    }
+
+    .help-btn {
+        font-size: 11px;
+    }
 }
+
 </style>
 </head>
 
+
 <body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
 <header class="header">
 
@@ -717,19 +970,81 @@ button {
             >
 
             <div>
+
                 <h1>Podzielnia WOW – Grafik</h1>
-                <small>Wspólny grafik dostępności</small>
+
+                <small>
+                    Wspólny grafik dostępności
+                </small>
+
             </div>
 
         </div>
+
+
+        <button
+            class="help-btn"
+            id="helpBtn"
+        >
+            ❓ Jak działa strona?
+        </button>
 
     </div>
 
 </header>
 
+
+
 <main class="container">
 
-    <div id="error" class="error"></div>
+
+    <div
+        id="error"
+        class="error"
+    ></div>
+
+
+
+    <!-- =====================================================
+         GRAFIK NA DZIŚ
+    ====================================================== -->
+
+    <section class="daily-card">
+
+        <div class="daily-header">
+
+            <div class="daily-header-left">
+
+                <h2>
+                    📅 Grafik na dziś
+                </h2>
+
+                <p id="dailyDate"></p>
+
+            </div>
+
+            <div
+                class="daily-date"
+                id="dailyCount"
+            >
+                0 osób
+            </div>
+
+        </div>
+
+
+        <div
+            class="daily-list"
+            id="dailySchedule"
+        ></div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         MIESIĄC
+    ====================================================== -->
 
     <div class="topbar">
 
@@ -742,10 +1057,12 @@ button {
                 ‹
             </button>
 
+
             <div
                 class="month-title"
                 id="monthTitle"
             ></div>
+
 
             <button
                 class="icon-btn"
@@ -756,6 +1073,7 @@ button {
 
         </div>
 
+
         <button
             class="secondary-btn"
             id="todayBtn"
@@ -763,22 +1081,25 @@ button {
             Dzisiaj
         </button>
 
-        <button
-            class="secondary-btn"
-            id="howItWorksBtn"
-        >
-            ❓ Jak działa strona?
-        </button>
-
     </div>
 
+
+
+    <!-- =====================================================
+         GŁÓWNA CZĘŚĆ
+    ====================================================== -->
+
     <section class="cards">
+
+
+        <!-- OSOBY -->
 
         <aside class="card people-card">
 
             <div class="card-title">
                 Osoby w grafiku
             </div>
+
 
             <button
                 class="primary-btn add-person"
@@ -787,6 +1108,7 @@ button {
                 + Dodaj siebie do grafiku
             </button>
 
+
             <div
                 class="people"
                 id="peopleList"
@@ -794,11 +1116,17 @@ button {
 
         </aside>
 
+
+
+        <!-- DESKTOP -->
+
         <section class="card schedule-wrapper">
 
             <div class="schedule-scroll">
 
-                <div id="desktopSchedule"></div>
+                <div
+                    id="desktopSchedule"
+                ></div>
 
             </div>
 
@@ -806,15 +1134,23 @@ button {
 
     </section>
 
+
+
+    <!-- MOBILE -->
+
     <section
         id="mobileSchedule"
         class="mobile-schedule"
     ></section>
 
+
 </main>
 
 
-<!-- DODAWANIE OSOBY -->
+
+<!-- =========================================================
+     MODAL – DODAWANIE OSOBY
+========================================================= -->
 
 <div
     class="modal-backdrop"
@@ -822,6 +1158,7 @@ button {
 >
 
     <div class="modal">
+
 
         <div class="modal-header">
 
@@ -837,6 +1174,7 @@ button {
 
             </div>
 
+
             <button
                 class="close-btn"
                 onclick="closeModal('personModal')"
@@ -845,6 +1183,7 @@ button {
             </button>
 
         </div>
+
 
         <div class="modal-content">
 
@@ -864,6 +1203,7 @@ button {
 
             </div>
 
+
             <button
                 class="primary-btn"
                 style="width:100%"
@@ -879,7 +1219,10 @@ button {
 </div>
 
 
-<!-- GODZINY -->
+
+<!-- =========================================================
+     MODAL – GODZINY
+========================================================= -->
 
 <div
     class="modal-backdrop"
@@ -888,15 +1231,21 @@ button {
 
     <div class="modal">
 
+
         <div class="modal-header">
 
             <div>
 
-                <h2 id="availabilityTitle"></h2>
+                <h2
+                    id="availabilityTitle"
+                ></h2>
 
-                <p id="availabilitySubtitle"></p>
+                <p
+                    id="availabilitySubtitle"
+                ></p>
 
             </div>
+
 
             <button
                 class="close-btn"
@@ -907,7 +1256,9 @@ button {
 
         </div>
 
+
         <div class="modal-content">
+
 
             <div
                 class="selection-info"
@@ -916,12 +1267,15 @@ button {
                 Brak zaznaczonej dostępności
             </div>
 
+
             <div
                 class="time-grid"
                 id="timeGrid"
             ></div>
 
+
             <div class="modal-actions">
+
 
                 <button
                     class="secondary-btn"
@@ -930,12 +1284,14 @@ button {
                     Wyczyść
                 </button>
 
+
                 <button
                     class="primary-btn"
                     id="saveAvailabilityBtn"
                 >
                     Zapisz
                 </button>
+
 
             </div>
 
@@ -946,7 +1302,10 @@ button {
 </div>
 
 
-<!-- JAK DZIAŁA STRONA -->
+
+<!-- =========================================================
+     MODAL – JAK DZIAŁA STRONA
+========================================================= -->
 
 <div
     class="modal-backdrop"
@@ -955,19 +1314,21 @@ button {
 
     <div class="modal">
 
+
         <div class="modal-header">
 
             <div>
 
                 <h2>
-                    Jak działa strona?
+                    ❓ Jak działa strona?
                 </h2>
 
                 <p>
-                    Prosta instrukcja obsługi grafiku
+                    Szybka instrukcja obsługi grafiku
                 </p>
 
             </div>
+
 
             <button
                 class="close-btn"
@@ -978,158 +1339,174 @@ button {
 
         </div>
 
-        <div class="help-content">
 
-            <div class="help-step">
+        <div class="modal-content">
 
-                <div class="help-number">
-                    1
-                </div>
 
-                <div>
+            <div class="help-section">
 
-                    <strong>
-                        Dodaj siebie
-                    </strong>
+                <h3>
+                    👤 Dodawanie siebie
+                </h3>
 
-                    <p>
-                        Kliknij „+ Dodaj siebie do grafiku”
-                        i wpisz swoje imię.
-                    </p>
+                <div class="help-step">
 
-                </div>
+                    <div class="help-number">
+                        1
+                    </div>
 
-            </div>
-
-            <div class="help-step">
-
-                <div class="help-number">
-                    2
-                </div>
-
-                <div>
-
-                    <strong>
-                        Wybierz dzień
-                    </strong>
-
-                    <p>
-                        Kliknij swoją komórkę przy wybranym
-                        dniu, żeby ustawić swoją dostępność.
-                    </p>
+                    <div class="help-step-text">
+                        Kliknij <b>„Dodaj siebie do grafiku”</b>.
+                    </div>
 
                 </div>
 
-            </div>
 
-            <div class="help-step">
+                <div class="help-step">
 
-                <div class="help-number">
-                    3
+                    <div class="help-number">
+                        2
+                    </div>
+
+                    <div class="help-step-text">
+                        Wpisz swoje imię lub nazwę, pod którą chcesz być widoczny.
+                    </div>
+
                 </div>
 
-                <div>
 
-                    <strong>
-                        Zaznacz godziny
-                    </strong>
+                <div class="help-step">
 
-                    <p>
-                        Kliknij lub przeciągnij po godzinach.
-                        Godziny są podzielone na półgodzinne
-                        przedziały.
-                    </p>
+                    <div class="help-number">
+                        3
+                    </div>
+
+                    <div class="help-step-text">
+                        Kliknij <b>„Dodaj mnie”</b>.
+                    </div>
 
                 </div>
 
             </div>
 
-            <div class="help-step">
 
-                <div class="help-number">
-                    4
-                </div>
 
-                <div>
+            <div class="help-section">
 
-                    <strong>
-                        Przykład: 2 godziny
-                    </strong>
+                <h3>
+                    🕐 Dodawanie dyżuru
+                </h3>
 
-                    <p>
-                        Jeśli chcesz być dostępny od 16:00
-                        do 18:00, zaznacz 16:00, 16:30,
-                        17:00 i 17:30.
-                    </p>
+                <div class="help-step">
 
-                </div>
+                    <div class="help-number">
+                        1
+                    </div>
 
-            </div>
-
-            <div class="help-step">
-
-                <div class="help-number">
-                    5
-                </div>
-
-                <div>
-
-                    <strong>
-                        Zapisz
-                    </strong>
-
-                    <p>
-                        Kliknij „Zapisz”. Twoja dostępność
-                        pojawi się od razu w grafiku.
-                    </p>
+                    <div class="help-step-text">
+                        Kliknij swoją komórkę przy wybranym dniu.
+                    </div>
 
                 </div>
 
-            </div>
 
-            <div class="help-step">
+                <div class="help-step">
 
-                <div class="help-number">
-                    6
+                    <div class="help-number">
+                        2
+                    </div>
+
+                    <div class="help-step-text">
+                        Wybierz godziny. Możesz zaznaczyć je przeciągając palcem lub myszką.
+                    </div>
+
                 </div>
 
-                <div>
 
-                    <strong>
-                        Wspólny grafik
-                    </strong>
+                <div class="help-step">
 
-                    <p>
-                        Wszystkie osoby widzą ten sam grafik.
-                        Zmiany są synchronizowane na żywo
-                        między telefonami i komputerami.
-                    </p>
+                    <div class="help-number">
+                        3
+                    </div>
+
+                    <div class="help-step-text">
+                        Godziny są ustawiane co <b>30 minut</b>, więc możesz ustawić np. <b>14:00–16:00</b>.
+                    </div>
+
+                </div>
+
+
+                <div class="help-step">
+
+                    <div class="help-number">
+                        4
+                    </div>
+
+                    <div class="help-step-text">
+                        Kliknij <b>„Zapisz”</b>.
+                    </div>
 
                 </div>
 
             </div>
 
-            <div class="help-step">
 
-                <div class="help-number">
-                    7
-                </div>
 
-                <div>
+            <div class="help-section">
 
-                    <strong>
-                        Zmiana dostępności
-                    </strong>
+                <h3>
+                    📅 Grafik na dziś
+                </h3>
 
-                    <p>
-                        Kliknij ponownie swój dzień,
-                        zmień zaznaczone godziny i kliknij
-                        „Zapisz”.
-                    </p>
-
-                </div>
+                <p>
+                    Na samej górze strony znajduje się aktualny grafik na dzisiaj.
+                    Pokazywane są tam tylko osoby, które mają ustawioną dostępność
+                    w danym dniu. Dzięki temu nie ma pustych wpisów zajmujących miejsce.
+                </p>
 
             </div>
+
+
+
+            <div class="help-section">
+
+                <h3>
+                    🌐 Wspólny grafik
+                </h3>
+
+                <p>
+                    Wszystkie dane są zapisywane w Supabase.
+                    Dzięki temu po wejściu na stronę z innego telefonu,
+                    komputera lub przeglądarki zobaczysz ten sam aktualny grafik.
+                </p>
+
+            </div>
+
+
+
+            <div class="help-section">
+
+                <h3>
+                    🗑️ Usuwanie osoby
+                </h3>
+
+                <p>
+                    Przy swojej nazwie możesz użyć ikony kosza,
+                    aby usunąć osobę z grafiku.
+                </p>
+
+            </div>
+
+
+
+            <button
+                class="primary-btn"
+                style="width:100%; margin-top:5px;"
+                onclick="closeModal('helpModal')"
+            >
+                Rozumiem 👍
+            </button>
+
 
         </div>
 
@@ -1138,11 +1515,17 @@ button {
 </div>
 
 
+
+<!-- TOAST -->
+
 <div
     class="toast"
     id="toast"
 ></div>
 
+
+
+<!-- LOADING -->
 
 <div
     class="loading"
@@ -1154,7 +1537,9 @@ button {
 </div>
 
 
+
 <script>
+
 
 /* =========================================================
    SUPABASE
@@ -1166,11 +1551,13 @@ const SUPABASE_URL =
 const SUPABASE_ANON_KEY =
     "sb_publishable_2aNS5-OgewlO9MRh7-q-1g_5EwGL4UM";
 
+
 const supabaseClient =
     window.supabase.createClient(
         SUPABASE_URL,
         SUPABASE_ANON_KEY
     );
+
 
 
 /* =========================================================
@@ -1196,6 +1583,7 @@ let dragging = false;
 let dragStart = null;
 
 
+
 /* =========================================================
    GODZINY
 ========================================================= */
@@ -1204,7 +1592,11 @@ function generateTimeSlots() {
 
     const slots = [];
 
-    for (let hour = 12; hour <= 22; hour++) {
+    for (
+        let hour = 12;
+        hour <= 22;
+        hour++
+    ) {
 
         slots.push(
             `${String(hour).padStart(2,"0")}:00`
@@ -1221,9 +1613,13 @@ function generateTimeSlots() {
     }
 
     return slots;
+
 }
 
-const timeSlots = generateTimeSlots();
+
+const timeSlots =
+    generateTimeSlots();
+
 
 
 /* =========================================================
@@ -1244,7 +1640,9 @@ function dateToString(date) {
             .padStart(2,"0");
 
     return `${year}-${month}-${day}`;
+
 }
+
 
 function getDaysInMonth(date) {
 
@@ -1253,7 +1651,9 @@ function getDaysInMonth(date) {
         date.getMonth() + 1,
         0
     ).getDate();
+
 }
+
 
 function getDateForDay(day) {
 
@@ -1262,7 +1662,9 @@ function getDateForDay(day) {
         currentMonth.getMonth(),
         day
     );
+
 }
+
 
 function formatMonth(date) {
 
@@ -1273,7 +1675,9 @@ function formatMonth(date) {
             year: "numeric"
         }
     ).format(date);
+
 }
+
 
 function formatFullDate(date) {
 
@@ -1285,7 +1689,9 @@ function formatFullDate(date) {
             month: "long"
         }
     ).format(date);
+
 }
+
 
 function shortWeekday(date) {
 
@@ -1298,7 +1704,9 @@ function shortWeekday(date) {
     .format(date)
     .replace(".","")
     .slice(0,3);
+
 }
+
 
 
 /* =========================================================
@@ -1313,7 +1721,9 @@ function setLoading(value) {
             "hidden",
             !value
         );
+
 }
+
 
 function showToast(message) {
 
@@ -1336,7 +1746,9 @@ function showToast(message) {
             );
 
         },2200);
+
 }
+
 
 function showError(message) {
 
@@ -1346,14 +1758,18 @@ function showError(message) {
     error.textContent = message;
 
     error.style.display = "block";
+
 }
+
 
 function hideError() {
 
     document
         .getElementById("error")
         .style.display = "none";
+
 }
+
 
 
 /* =========================================================
@@ -1390,19 +1806,25 @@ async function loadData() {
 
         ]);
 
+
         if (usersResult.error)
             throw usersResult.error;
+
 
         if (availabilityResult.error)
             throw availabilityResult.error;
 
+
         users =
             usersResult.data || [];
+
 
         availability =
             availabilityResult.data || [];
 
+
         render();
+
 
     } catch(error) {
 
@@ -1417,7 +1839,9 @@ async function loadData() {
         setLoading(false);
 
     }
+
 }
+
 
 
 /* =========================================================
@@ -1465,6 +1889,7 @@ function setupRealtime() {
 }
 
 
+
 /* =========================================================
    RENDER
 ========================================================= */
@@ -1476,6 +1901,9 @@ function render() {
         .textContent =
         formatMonth(currentMonth);
 
+
+    renderDailySchedule();
+
     renderPeople();
 
     renderDesktop();
@@ -1483,6 +1911,132 @@ function render() {
     renderMobile();
 
 }
+
+
+
+/* =========================================================
+   GRAFIK NA DZIŚ
+========================================================= */
+
+function renderDailySchedule() {
+
+    const container =
+        document.getElementById(
+            "dailySchedule"
+        );
+
+
+    const date =
+        new Date();
+
+
+    const dateString =
+        dateToString(date);
+
+
+    document
+        .getElementById("dailyDate")
+        .textContent =
+        formatFullDate(date);
+
+
+    const peopleWithDuty =
+        users.filter(user => {
+
+            return getUserAvailability(
+                user.id,
+                dateString
+            ).length > 0;
+
+        });
+
+
+    document
+        .getElementById("dailyCount")
+        .textContent =
+        `${peopleWithDuty.length} ${
+            peopleWithDuty.length === 1
+                ? "osoba"
+                : "osób"
+        }`;
+
+
+    if (!peopleWithDuty.length) {
+
+        container.innerHTML = `
+
+            <div class="daily-empty">
+
+                Dzisiaj nikt nie ma ustawionego dyżuru.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        peopleWithDuty.map(user => {
+
+            const entries =
+                getUserAvailability(
+                    user.id,
+                    dateString
+                );
+
+
+            return `
+
+                <div
+                    class="daily-person"
+                    onclick="
+                        openAvailability(
+                            '${user.id}',
+                            '${dateString}'
+                        )
+                    "
+                >
+
+                    <div class="daily-person-name">
+
+                        <span class="daily-dot"></span>
+
+                        <span>
+                            ${escapeHtml(
+                                user.display_name
+                            )}
+                        </span>
+
+                    </div>
+
+
+                    <div class="daily-times">
+
+                        ${entries.map(entry => `
+
+                            <span class="daily-time">
+
+                                ${entry.start_time.slice(0,5)}
+                                –
+                                ${entry.end_time.slice(0,5)}
+
+                            </span>
+
+                        `).join("")}
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+}
+
 
 
 /* =========================================================
@@ -1496,17 +2050,24 @@ function renderPeople() {
             "peopleList"
         );
 
+
     if (!users.length) {
 
         list.innerHTML = `
+
             <div class="notice">
+
                 Nikt jeszcze nie dodał siebie
                 do grafiku.
+
             </div>
+
         `;
 
         return;
+
     }
+
 
     list.innerHTML =
         users.map(user => `
@@ -1518,14 +2079,18 @@ function renderPeople() {
                     <span class="status-dot"></span>
 
                     <span class="person-name-text">
+
                         ${escapeHtml(
                             user.display_name
                         )}
+
                     </span>
 
                 </div>
 
+
                 <div class="person-actions">
+
 
                     <button
                         class="small-btn"
@@ -1537,6 +2102,7 @@ function renderPeople() {
                         ✎
                     </button>
 
+
                     <button
                         class="small-btn delete"
                         title="Usuń mnie z grafiku"
@@ -1547,6 +2113,7 @@ function renderPeople() {
                         🗑
                     </button>
 
+
                 </div>
 
             </div>
@@ -1554,6 +2121,7 @@ function renderPeople() {
         `).join("");
 
 }
+
 
 
 /* =========================================================
@@ -1567,22 +2135,30 @@ function renderDesktop() {
             "desktopSchedule"
         );
 
+
     if (!users.length) {
 
         container.innerHTML = `
+
             <div class="notice">
+
                 Dodaj pierwszą osobę,
                 aby rozpocząć grafik.
+
             </div>
+
         `;
 
         return;
+
     }
+
 
     const days =
         getDaysInMonth(
             currentMonth
         );
+
 
     let html = `
 
@@ -1599,6 +2175,7 @@ function renderDesktop() {
 
     `;
 
+
     for (
         let day = 1;
         day <= days;
@@ -1608,13 +2185,16 @@ function renderDesktop() {
         const date =
             getDateForDay(day);
 
+
         const weekend =
             date.getDay() === 0 ||
             date.getDay() === 6;
 
+
         const today =
             dateToString(date) ===
             dateToString(new Date());
+
 
         html += `
 
@@ -1638,6 +2218,7 @@ function renderDesktop() {
 
     }
 
+
     html += `</div>`;
 
 
@@ -1648,12 +2229,15 @@ function renderDesktop() {
             <div class="schedule-row">
 
                 <div class="person-cell">
+
                     ${escapeHtml(
                         user.display_name
                     )}
+
                 </div>
 
         `;
+
 
         for (
             let day = 1;
@@ -1664,22 +2248,27 @@ function renderDesktop() {
             const date =
                 getDateForDay(day);
 
+
             const dateString =
                 dateToString(date);
+
 
             const weekend =
                 date.getDay() === 0 ||
                 date.getDay() === 6;
 
+
             const today =
                 dateString ===
                 dateToString(new Date());
+
 
             const entries =
                 getUserAvailability(
                     user.id,
                     dateString
                 );
+
 
             html += `
 
@@ -1699,6 +2288,7 @@ function renderDesktop() {
 
             `;
 
+
             if (entries.length) {
 
                 entries.forEach(
@@ -1709,9 +2299,11 @@ function renderDesktop() {
                             <span
                                 class="availability-pill"
                             >
+
                                 ${entry.start_time.slice(0,5)}
                                 –
                                 ${entry.end_time.slice(0,5)}
+
                             </span>
 
                         `;
@@ -1722,26 +2314,33 @@ function renderDesktop() {
             } else {
 
                 html += `
+
                     <div class="empty-day">
                         —
                     </div>
+
                 `;
 
             }
+
 
             html += `</div>`;
 
         }
 
+
         html += `</div>`;
 
     });
 
+
     html += `</div>`;
+
 
     container.innerHTML = html;
 
 }
+
 
 
 /* =========================================================
@@ -1755,26 +2354,37 @@ function renderMobile() {
             "mobileSchedule"
         );
 
+
     if (!users.length) {
 
         container.innerHTML = `
+
             <div class="card">
+
                 <div class="notice">
+
                     Dodaj pierwszą osobę,
                     aby rozpocząć grafik.
+
                 </div>
+
             </div>
+
         `;
 
         return;
+
     }
+
 
     const days =
         getDaysInMonth(
             currentMonth
         );
 
+
     let html = "";
+
 
     for (
         let day = 1;
@@ -1785,16 +2395,20 @@ function renderMobile() {
         const date =
             getDateForDay(day);
 
+
         const dateString =
             dateToString(date);
+
 
         const today =
             dateString ===
             dateToString(new Date());
 
+
         html += `
 
             <div class="mobile-day">
+
 
                 <div
                     class="
@@ -1804,16 +2418,22 @@ function renderMobile() {
                 >
 
                     <div class="mobile-day-name">
+
                         ${shortWeekday(date).toUpperCase()}
+
                     </div>
 
+
                     <div class="mobile-day-number">
+
                         ${formatFullDate(date)}
+
                     </div>
 
                 </div>
 
         `;
+
 
         users.forEach(user => {
 
@@ -1822,6 +2442,7 @@ function renderMobile() {
                     user.id,
                     dateString
                 );
+
 
             html += `
 
@@ -1836,14 +2457,18 @@ function renderMobile() {
                 >
 
                     <div class="mobile-person-name">
+
                         ${escapeHtml(
                             user.display_name
                         )}
+
                     </div>
+
 
                     <div class="mobile-times">
 
             `;
+
 
             if (entries.length) {
 
@@ -1853,9 +2478,11 @@ function renderMobile() {
                         html += `
 
                             <span class="mobile-time">
+
                                 ${entry.start_time.slice(0,5)}
                                 –
                                 ${entry.end_time.slice(0,5)}
+
                             </span>
 
                         `;
@@ -1866,12 +2493,17 @@ function renderMobile() {
             } else {
 
                 html += `
+
                     <span class="mobile-empty">
+
                         Brak dostępności
+
                     </span>
+
                 `;
 
             }
+
 
             html += `
 
@@ -1883,13 +2515,16 @@ function renderMobile() {
 
         });
 
+
         html += `</div>`;
 
     }
 
+
     container.innerHTML = html;
 
 }
+
 
 
 /* =========================================================
@@ -1917,6 +2552,7 @@ function getUserAvailability(
 }
 
 
+
 function openFirstDay(userId) {
 
     const date =
@@ -1924,12 +2560,14 @@ function openFirstDay(userId) {
             getDateForDay(1)
         );
 
+
     openAvailability(
         userId,
         date
     );
 
 }
+
 
 
 function openAvailability(
@@ -1942,16 +2580,21 @@ function openAvailability(
             u => u.id === userId
         );
 
+
     if (!user) return;
+
 
     selectedUserId =
         userId;
 
+
     selectedDate =
         date;
 
+
     selectedSlots =
         new Set();
+
 
     const existing =
         getUserAvailability(
@@ -1959,19 +2602,24 @@ function openAvailability(
             date
         );
 
+
     existing.forEach(entry => {
 
         const start =
             entry.start_time.slice(0,5);
 
+
         const end =
             entry.end_time.slice(0,5);
+
 
         const startIndex =
             timeSlots.indexOf(start);
 
+
         const endIndex =
             timeSlots.indexOf(end);
+
 
         if (
             startIndex >= 0 &&
@@ -1992,12 +2640,14 @@ function openAvailability(
 
     });
 
+
     document
         .getElementById(
             "availabilityTitle"
         )
         .textContent =
         user.display_name;
+
 
     document
         .getElementById(
@@ -2010,7 +2660,9 @@ function openAvailability(
             )
         );
 
+
     renderTimeGrid();
+
 
     document
         .getElementById(
@@ -2021,6 +2673,11 @@ function openAvailability(
 }
 
 
+
+/* =========================================================
+   TIME GRID
+========================================================= */
+
 function renderTimeGrid() {
 
     const grid =
@@ -2028,7 +2685,9 @@ function renderTimeGrid() {
             "timeGrid"
         );
 
+
     grid.innerHTML = "";
+
 
     timeSlots.forEach(
         (time,index) => {
@@ -2038,8 +2697,10 @@ function renderTimeGrid() {
                     "button"
                 );
 
+
             button.className =
                 "time-slot";
+
 
             if (
                 selectedSlots.has(index)
@@ -2051,65 +2712,81 @@ function renderTimeGrid() {
 
             }
 
+
             button.textContent =
                 time;
 
+
             button.dataset.index =
                 index;
+
 
             button.addEventListener(
                 "pointerdown",
                 startDrag
             );
 
+
             button.addEventListener(
                 "pointerenter",
                 continueDrag
             );
+
 
             grid.appendChild(button);
 
         }
     );
 
+
     updateSelectionInfo();
 
 }
+
 
 
 function startDrag(event) {
 
     event.preventDefault();
 
+
     dragging = true;
+
 
     dragStart =
         Number(
             event.currentTarget.dataset.index
         );
 
+
     toggleRange(
         dragStart,
         dragStart
     );
 
+
     document.addEventListener(
         "pointerup",
         stopDrag,
-        { once:true }
+        {
+            once:true
+        }
     );
 
 }
+
 
 
 function continueDrag(event) {
 
     if (!dragging) return;
 
+
     const index =
         Number(
             event.currentTarget.dataset.index
         );
+
 
     toggleRange(
         dragStart,
@@ -2117,6 +2794,7 @@ function continueDrag(event) {
     );
 
 }
+
 
 
 function stopDrag() {
@@ -2128,6 +2806,7 @@ function stopDrag() {
 }
 
 
+
 function toggleRange(
     start,
     end
@@ -2136,10 +2815,13 @@ function toggleRange(
     const min =
         Math.min(start,end);
 
+
     const max =
         Math.max(start,end);
 
+
     selectedSlots.clear();
+
 
     for (
         let i = min;
@@ -2151,9 +2833,11 @@ function toggleRange(
 
     }
 
+
     renderTimeGrid();
 
 }
+
 
 
 function updateSelectionInfo() {
@@ -2163,13 +2847,16 @@ function updateSelectionInfo() {
             "selectionInfo"
         );
 
+
     if (!selectedSlots.size) {
 
         info.textContent =
             "Brak zaznaczonej dostępności";
 
         return;
+
     }
+
 
     const indexes =
         [...selectedSlots]
@@ -2177,20 +2864,24 @@ function updateSelectionInfo() {
                 (a,b) => a-b
             );
 
+
     const start =
         timeSlots[
             indexes[0]
         ];
+
 
     const end =
         timeSlots[
             indexes[indexes.length - 1] + 1
         ];
 
+
     info.textContent =
         `${start} – ${end || "23:00"}`;
 
 }
+
 
 
 /* =========================================================
@@ -2204,7 +2895,9 @@ async function saveAvailability() {
         !selectedDate
     ) return;
 
+
     setLoading(true);
+
 
     try {
 
@@ -2221,6 +2914,7 @@ async function saveAvailability() {
                     selectedDate
                 );
 
+
         if (deleteError)
             throw deleteError;
 
@@ -2233,13 +2927,17 @@ async function saveAvailability() {
                         (a,b) => a-b
                     );
 
+
             const ranges = [];
+
 
             let start =
                 indexes[0];
 
+
             let previous =
                 indexes[0];
+
 
             for (
                 let i = 1;
@@ -2262,8 +2960,10 @@ async function saveAvailability() {
                         previous + 1
                     ]);
 
+
                     start =
                         indexes[i];
+
 
                     previous =
                         indexes[i];
@@ -2271,6 +2971,7 @@ async function saveAvailability() {
                 }
 
             }
+
 
             ranges.push([
                 start,
@@ -2307,28 +3008,35 @@ async function saveAvailability() {
                     .from("availability")
                     .insert(rows);
 
+
             if (error)
                 throw error;
 
         }
 
+
         closeModal(
             "availabilityModal"
         );
 
+
         await loadData();
+
 
         showToast(
             "Zapisano dostępność"
         );
 
+
     } catch(error) {
 
         console.error(error);
 
+
         showError(
             "Nie udało się zapisać dostępności."
         );
+
 
     } finally {
 
@@ -2337,6 +3045,7 @@ async function saveAvailability() {
     }
 
 }
+
 
 
 /* =========================================================
@@ -2350,7 +3059,9 @@ async function clearAvailability() {
         !selectedDate
     ) return;
 
+
     setLoading(true);
+
 
     try {
 
@@ -2367,28 +3078,36 @@ async function clearAvailability() {
                     selectedDate
                 );
 
+
         if (error)
             throw error;
 
+
         selectedSlots.clear();
+
 
         closeModal(
             "availabilityModal"
         );
 
+
         await loadData();
+
 
         showToast(
             "Wyczyszczono dostępność"
         );
 
+
     } catch(error) {
 
         console.error(error);
 
+
         showError(
             "Nie udało się wyczyścić dostępności."
         );
+
 
     } finally {
 
@@ -2397,6 +3116,7 @@ async function clearAvailability() {
     }
 
 }
+
 
 
 /* =========================================================
@@ -2410,17 +3130,22 @@ async function addPerson() {
             "personName"
         );
 
+
     const name =
         input.value.trim();
+
 
     if (!name) {
 
         input.focus();
 
         return;
+
     }
 
+
     setLoading(true);
+
 
     try {
 
@@ -2431,28 +3156,36 @@ async function addPerson() {
                     display_name:name
                 });
 
+
         if (error)
             throw error;
 
+
         input.value = "";
+
 
         closeModal(
             "personModal"
         );
 
+
         await loadData();
+
 
         showToast(
             "Dodano do grafiku"
         );
 
+
     } catch(error) {
 
         console.error(error);
 
+
         showError(
             "Nie udało się dodać osoby."
         );
+
 
     } finally {
 
@@ -2461,6 +3194,7 @@ async function addPerson() {
     }
 
 }
+
 
 
 /* =========================================================
@@ -2474,17 +3208,22 @@ async function deletePerson(userId) {
             u => u.id === userId
         );
 
+
     if (!user) return;
+
 
     const confirmed =
         confirm(
             `Czy na pewno chcesz usunąć ${user.display_name} z grafiku?\n\nJej dostępność zostanie również usunięta.`
         );
 
+
     if (!confirmed)
         return;
 
+
     setLoading(true);
+
 
     try {
 
@@ -2497,22 +3236,28 @@ async function deletePerson(userId) {
                     userId
                 );
 
+
         if (error)
             throw error;
 
+
         await loadData();
+
 
         showToast(
             `${user.display_name} usunięto z grafiku`
         );
 
+
     } catch(error) {
 
         console.error(error);
 
+
         showError(
             "Nie udało się usunąć osoby."
         );
+
 
     } finally {
 
@@ -2521,6 +3266,7 @@ async function deletePerson(userId) {
     }
 
 }
+
 
 
 /* =========================================================
@@ -2538,6 +3284,11 @@ function closeModal(id) {
 }
 
 
+
+/* =========================================================
+   DODAJ OSOBĘ – BUTTON
+========================================================= */
+
 document
     .getElementById(
         "addPersonBtn"
@@ -2553,6 +3304,7 @@ document
                 .classList.add(
                     "show"
                 );
+
 
             setTimeout(
                 () => {
@@ -2571,6 +3323,36 @@ document
     );
 
 
+
+/* =========================================================
+   POMOC
+========================================================= */
+
+document
+    .getElementById(
+        "helpBtn"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            document
+                .getElementById(
+                    "helpModal"
+                )
+                .classList.add(
+                    "show"
+                );
+
+        }
+    );
+
+
+
+/* =========================================================
+   ZAPIS OSOBY
+========================================================= */
+
 document
     .getElementById(
         "savePersonBtn"
@@ -2579,6 +3361,7 @@ document
         "click",
         addPerson
     );
+
 
 
 document
@@ -2601,6 +3384,11 @@ document
     );
 
 
+
+/* =========================================================
+   ZAPIS GODZIN
+========================================================= */
+
 document
     .getElementById(
         "saveAvailabilityBtn"
@@ -2611,6 +3399,11 @@ document
     );
 
 
+
+/* =========================================================
+   WYCZYŚĆ GODZINY
+========================================================= */
+
 document
     .getElementById(
         "clearAvailabilityBtn"
@@ -2620,29 +3413,6 @@ document
         clearAvailability
     );
 
-
-/* =========================================================
-   JAK DZIAŁA STRONA
-========================================================= */
-
-document
-    .getElementById(
-        "howItWorksBtn"
-    )
-    .addEventListener(
-        "click",
-        () => {
-
-            document
-                .getElementById(
-                    "helpModal"
-                )
-                .classList.add(
-                    "show"
-                );
-
-        }
-    );
 
 
 /* =========================================================
@@ -2664,10 +3434,12 @@ document
                     1
                 );
 
+
             render();
 
         }
     );
+
 
 
 document
@@ -2685,10 +3457,12 @@ document
                     1
                 );
 
+
             render();
 
         }
     );
+
 
 
 document
@@ -2702,6 +3476,7 @@ document
             const now =
                 new Date();
 
+
             currentMonth =
                 new Date(
                     now.getFullYear(),
@@ -2709,10 +3484,12 @@ document
                     1
                 );
 
+
             render();
 
         }
     );
+
 
 
 /* =========================================================
@@ -2731,6 +3508,7 @@ function escapeHtml(value) {
 }
 
 
+
 /* =========================================================
    START
 ========================================================= */
@@ -2740,6 +3518,7 @@ render();
 loadData();
 
 setupRealtime();
+
 
 </script>
 
